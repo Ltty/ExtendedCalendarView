@@ -1,17 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
     <color name="holo_light_background">#ffe8e8e8</color>
     <color name="holo_light_selected">#ff7cc9e5</color>
-
     <color name="transparent">#00000000</color>
     <color name="white">#ffffff</color>
     <color name="black">#000000</color>
-    
     <color name="holo_blue">#ff0099cc</color>
     <color name="holo_white">#bebebe</color>
-
     <color name="holo_background_light">#fff3f3f3</color>
-    
+
     <!-- A light Holo shade of green -->
     <color name="holo_green_light">#ff99cc00</color>
 
@@ -20,47 +18,33 @@
 
     <!-- A light Holo shade of orange -->
     <color name="holo_orange_light">#ffffbb33</color>
-    
+
     <!-- A dark Holo shade of orange -->
     <color name="holo_orange_dark">#ffff8800</color>
-    
-    
-      <color name="pressed">#330066ff</color>
-
-	<color name="event_center">#ff6bd697</color>
-    
+    <color name="gray_dark">#ff333333</color>
+    <color name="pressed">#330066ff</color>
+    <color name="event_center">#ff6bd697</color>
 
     <!-- The app wide background color -->
     <color name="background_color">#fafafa</color>
     <color name="panel_text_foreground">#ffffffff</color>
     <color name="calendar_event_text_color">#ffFFFFFF</color>
-
     <color name="calendar_date_range_color">#80000000</color>
-
-
     <color name="week_saturday">#80333333</color>
     <color name="week_sunday">#80333333</color>
     <color name="calendar_future_bg_color">#ffffffff</color>
     <color name="calendar_hour_label">#ff666666</color>
     <color name="calendar_ampm_label">#ff999999</color>
     <color name="calendar_hour_background">#ffEEEEEE</color>
-
-
     <color name="calendar_date_banner_text_color">#ff666666</color>
-
     <color name="calendar_grid_area_selected">#e633b5e5</color>
-
-
     <color name="calendar_grid_line_inner_horizontal_color">#FFCCCCCC</color>
     <color name="calendar_grid_line_inner_vertical_color">#FFCCCCCC</color>
     <color name="calendar_grid_line_highlight_color">#ff707070</color>
-
     <color name="month_mini_day_number">#FF000000</color>
     <color name="month_day_names_color">#FF999999</color>
     <color name="month_event_other_color">#FF666666</color>
     <color name="month_other_month_day_number">#ff939497</color>
-
-
     <color name="edit_event_separator">#FFDDDDDD</color>
 
     <!-- Text color of the "new event" hint in day and week views -->

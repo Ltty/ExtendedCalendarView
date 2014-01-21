@@ -27,6 +27,7 @@ import android.view.animation.AnimationUtils;
 import android.widget.Toast;
 import android.widget.ViewSwitcher;
 
+import com.google.common.eventbus.Subscribe;
 import com.pocketlifestyle.calendar.R;
 import com.pocketlifestyle.calendar.dayview.AlternateEventRenderer.AlternateRendererDayViewResources;
 import com.pocketlifestyle.calendar.dayview.base.DayView;
@@ -96,6 +97,7 @@ public class YadviewHarnessDayViewFactory extends DefaultDayViewFactory {
     }
     
 
+    @Subscribe
     public void handleShowDateEvent(ViewEventEvent e){
         Toast.makeText(getContext(), "test! " + e.getEvent().toString(), Toast.LENGTH_SHORT ).show();
 
@@ -107,7 +109,7 @@ public class YadviewHarnessDayViewFactory extends DefaultDayViewFactory {
  //       goTo(e.getShowDate(), e.getShowTime());
   //  }
     
-
+    @Subscribe
     public void handleShowDateEvent(ShowDateInDayViewEvent e){
         goTo(e.getSelectedTime(), e.getSelectedTime());
     }

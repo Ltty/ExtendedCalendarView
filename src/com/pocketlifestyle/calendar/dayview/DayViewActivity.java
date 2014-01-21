@@ -29,13 +29,17 @@ import android.text.format.DateFormat;
 import android.text.format.Time;
 import android.util.Log;
 import android.widget.TextView;
+import android.widget.Toast;
 import android.widget.ViewSwitcher;
 
+import com.google.common.eventbus.Subscribe;
 import com.pocketlifestyle.calendar.R;
 import com.pocketlifestyle.calendar.dayview.base.DayView;
 import com.pocketlifestyle.calendar.dayview.base.Event;
 import com.pocketlifestyle.calendar.dayview.base.EventResource;
 import com.pocketlifestyle.calendar.dayview.base.events.EventSelectionListener;
+import com.pocketlifestyle.calendar.dayview.base.events.UpdateTitleEvent;
+import com.pocketlifestyle.calendar.dayview.base.events.ViewEventEvent;
 
 public class DayViewActivity extends Activity implements EventSelectionListener {
 
@@ -49,12 +53,12 @@ public class DayViewActivity extends Activity implements EventSelectionListener 
 	private Date mDate = null;
 
 	public static final String HISTORY_DETAIL_DATE_KEY = "date";
-	SimpleDateFormat format = new SimpleDateFormat("dd.MM.yyyy");
+	SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
+	private TextView dateView;
 
 	public DayViewActivity() {
 		// mEventResource = new DefaultEventResource(this, new
 		// DefaultUtilFactory("yadview_harness.prefs"));
-
 	}
 
 	@Override
@@ -67,18 +71,20 @@ public class DayViewActivity extends Activity implements EventSelectionListener 
 		if (extras != null) {
 			date = (GregorianCalendar) extras.getSerializable(HISTORY_DETAIL_DATE_KEY);
 		}
-		TextView dateView = (TextView) findViewById(R.id.dayViewActivityDateLabel);
+		dateView = (TextView) findViewById(R.id.dayViewActivityDateLabel);
 		Time day = new Time();
 		day.set(date.get(Calendar.DAY_OF_MONTH), date.get(Calendar.MONTH), date.get(Calendar.YEAR));
 
 		dateView.setText(DateFormat.getDateFormat(getApplicationContext()).format(date.getTime()));
 
 		ViewSwitcher vs = (ViewSwitcher) findViewById(R.id.view_switcher);
+
 		// // mViewFactory = new YadviewHarnessDayViewFactory(vs,
 		// mEventResource, this);
 		mViewFactory = new YadviewHarnessDayViewFactory(vs, mEventResource, this);
 		vs.setFactory(mViewFactory);
 		DayView dv = (DayView) vs.getCurrentView();
+		dv.getEventBus().register(this);
 		dv.setEventSelectionListener(this);
 		dv.setSelected(day, false, true);
 		dv.clearCachedEvents();
@@ -102,6 +108,7 @@ public class DayViewActivity extends Activity implements EventSelectionListener 
 
 	@Override
 	public void notifyEventSelected(Event _e) {
+
 		if (null != _e && !_e.equals(mLastEvent))// event selection is done
 													// twice ==> only show event
 													// details once

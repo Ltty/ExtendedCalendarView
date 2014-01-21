@@ -908,7 +908,7 @@ public class DayView extends View implements ScaleGestureDetector.OnScaleGesture
         end.monthDay += mNumDays - 1;
         // Move it forward one minute so the formatter doesn't lose a day
         end.minute += 1;
-        end.normalize(true);
+       // end.normalize(true);
         
         //TODO: mNumDays should be part of the display model - should be shared between dayview and event handler - no need to supply as part of event
         mEventBus.post(new UpdateTitleEvent(start, end, mNumDays));
