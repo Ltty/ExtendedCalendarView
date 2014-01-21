@@ -2,3 +2,7 @@
 /libs
 /.settings
 /gen
+/ExtendedCalendarView/bin/.classpath
+/ExtendedCalendarView/bin/.project
+/ExtendedCalendarView/bin/jarlist.cache
+/ExtendedCalendarView/bin/project.properties
