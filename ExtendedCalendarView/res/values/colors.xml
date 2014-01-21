@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="holo_light_background">#ffe8e8e8</color>
+    <color name="holo_light_selected">#ff7cc9e5</color>
+
+    <color name="transparent">#00000000</color>
+    <color name="white">#ffffff</color>
+    <color name="black">#000000</color>
+    
+    <color name="holo_blue">#ff0099cc</color>
+    <color name="holo_white">#bebebe</color>
+
+    <color name="holo_background_light">#fff3f3f3</color>
+    
+    <!-- A light Holo shade of green -->
+    <color name="holo_green_light">#ff99cc00</color>
+
+    <!-- A dark Holo shade of green -->
+    <color name="holo_green_dark">#ff669900</color>
+
+    <!-- A light Holo shade of orange -->
+    <color name="holo_orange_light">#ffffbb33</color>
+    
+    <!-- A dark Holo shade of orange -->
+    <color name="holo_orange_dark">#ffff8800</color>
+
+</resources>

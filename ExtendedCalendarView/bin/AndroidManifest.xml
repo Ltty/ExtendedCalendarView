@@ -14,7 +14,7 @@
         android:theme="@style/AppTheme" >
         
         <provider
-            android:name="com.tyczj.extendedcalendarview.CalendarProvider"
+            android:name="com.pocketlifestyle.calendar.monthview.CalendarProvider"
             android:authorities="com.tyczj.extendedcalendarview.calendarprovider" />
     </application>
 
