@@ -1,16 +1,15 @@
 package com.pocketlifestyle.calendar.dayview;
 
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
 import android.content.Context;
 import android.database.Cursor;
 
-import com.google.code.yadview.Event;
-import com.google.code.yadview.EventResource;
-import com.google.code.yadview.Predicate;
+import com.pocketlifestyle.calendar.dayview.base.Event;
+import com.pocketlifestyle.calendar.dayview.base.EventResource;
+import com.pocketlifestyle.calendar.dayview.base.Predicate;
 import com.pocketlifestyle.calendar.monthview.CalendarProvider;
 import com.pocketlifestyle.calendar.util.Color;
 import com.pocketlifestyle.calendar.util.Color.EventColor;

@@ -31,12 +31,11 @@ import android.util.Log;
 import android.widget.TextView;
 import android.widget.ViewSwitcher;
 
-import com.google.code.yadview.DayView;
-import com.google.code.yadview.Event;
-import com.google.code.yadview.EventResource;
-import com.google.code.yadview.events.EventSelectionListener;
-import com.google.code.yadview.impl.DefaultDayViewFactory;
-import com.tyczj.extendedcalendarview.R;
+import com.pocketlifestyle.calendar.R;
+import com.pocketlifestyle.calendar.dayview.base.DayView;
+import com.pocketlifestyle.calendar.dayview.base.Event;
+import com.pocketlifestyle.calendar.dayview.base.EventResource;
+import com.pocketlifestyle.calendar.dayview.base.events.EventSelectionListener;
 
 public class DayViewActivity extends Activity implements EventSelectionListener {
 

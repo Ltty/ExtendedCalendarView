@@ -6,9 +6,6 @@ import java.util.Set;
 import java.util.TimeZone;
 import java.util.concurrent.TimeUnit;
 
-import com.pocketlifestyle.calendar.util.Color.EventColor;
-import com.tyczj.extendedcalendarview.R;
-
 import android.content.Context;
 import android.graphics.Color;
 import android.graphics.Typeface;
@@ -20,6 +17,9 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+
+import com.pocketlifestyle.calendar.R;
+import com.pocketlifestyle.calendar.util.Color.EventColor;
 
 public class CalendarAdapter extends BaseAdapter {
 

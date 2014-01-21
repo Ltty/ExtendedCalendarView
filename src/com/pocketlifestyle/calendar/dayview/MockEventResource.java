@@ -24,10 +24,10 @@ import java.util.Random;
 
 import android.text.format.Time;
 
-import com.google.code.yadview.Event;
-import com.google.code.yadview.EventResource;
-import com.google.code.yadview.Predicate;
 import com.google.common.collect.Lists;
+import com.pocketlifestyle.calendar.dayview.base.Event;
+import com.pocketlifestyle.calendar.dayview.base.EventResource;
+import com.pocketlifestyle.calendar.dayview.base.Predicate;
 
 public class MockEventResource implements EventResource {
 

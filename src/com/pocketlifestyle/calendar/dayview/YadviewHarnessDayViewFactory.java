@@ -27,18 +27,17 @@ import android.view.animation.AnimationUtils;
 import android.widget.Toast;
 import android.widget.ViewSwitcher;
 
-import com.google.code.yadview.DayView;
-import com.google.code.yadview.DayViewOnKeyListener;
-import com.google.code.yadview.DayViewRenderer;
-import com.google.code.yadview.EventRenderer;
-import com.google.code.yadview.EventResource;
-import com.google.code.yadview.events.ShowDateInDayViewEvent;
-import com.google.code.yadview.events.ViewEventEvent;
-import com.google.code.yadview.impl.DefaultDayViewFactory;
-import com.google.code.yadview.impl.DefaultEventRenderer;
-import com.google.common.eventbus.Subscribe;
+import com.pocketlifestyle.calendar.R;
 import com.pocketlifestyle.calendar.dayview.AlternateEventRenderer.AlternateRendererDayViewResources;
-import com.tyczj.extendedcalendarview.R;
+import com.pocketlifestyle.calendar.dayview.base.DayView;
+import com.pocketlifestyle.calendar.dayview.base.DayViewOnKeyListener;
+import com.pocketlifestyle.calendar.dayview.base.DayViewRenderer;
+import com.pocketlifestyle.calendar.dayview.base.EventRenderer;
+import com.pocketlifestyle.calendar.dayview.base.EventResource;
+import com.pocketlifestyle.calendar.dayview.base.events.ShowDateInDayViewEvent;
+import com.pocketlifestyle.calendar.dayview.base.events.ViewEventEvent;
+import com.pocketlifestyle.calendar.dayview.base.impl.DefaultDayViewFactory;
+import com.pocketlifestyle.calendar.dayview.base.impl.DefaultEventRenderer;
 
 public class YadviewHarnessDayViewFactory extends DefaultDayViewFactory {
 
@@ -96,7 +95,7 @@ public class YadviewHarnessDayViewFactory extends DefaultDayViewFactory {
         return new AlternateDayViewRenderer(getResources());
     }
     
-    @Subscribe
+
     public void handleShowDateEvent(ViewEventEvent e){
         Toast.makeText(getContext(), "test! " + e.getEvent().toString(), Toast.LENGTH_SHORT ).show();
 
@@ -108,7 +107,7 @@ public class YadviewHarnessDayViewFactory extends DefaultDayViewFactory {
  //       goTo(e.getShowDate(), e.getShowTime());
   //  }
     
-    @Subscribe
+
     public void handleShowDateEvent(ShowDateInDayViewEvent e){
         goTo(e.getSelectedTime(), e.getSelectedTime());
     }

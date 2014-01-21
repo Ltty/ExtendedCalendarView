@@ -26,9 +26,9 @@ import android.graphics.Paint.Style;
 import android.graphics.Path;
 import android.graphics.Rect;
 
-import com.google.code.yadview.DayViewRenderer;
-import com.google.code.yadview.DayViewResources;
-import com.google.code.yadview.impl.DefaultDayViewRenderer;
+import com.pocketlifestyle.calendar.dayview.base.DayViewRenderer;
+import com.pocketlifestyle.calendar.dayview.base.DayViewResources;
+import com.pocketlifestyle.calendar.dayview.base.impl.DefaultDayViewRenderer;
 
 public class AlternateDayViewRenderer extends DefaultDayViewRenderer implements DayViewRenderer {
 

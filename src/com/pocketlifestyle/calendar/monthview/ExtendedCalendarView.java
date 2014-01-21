@@ -3,8 +3,6 @@ package com.pocketlifestyle.calendar.monthview;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
-import com.tyczj.extendedcalendarview.R;
-
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.graphics.Bitmap;
@@ -17,7 +15,6 @@ import android.view.ContextMenu;
 import android.view.ContextMenu.ContextMenuInfo;
 import android.view.Gravity;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.view.View.OnCreateContextMenuListener;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
@@ -27,6 +24,8 @@ import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+
+import com.pocketlifestyle.calendar.R;
 
 public class ExtendedCalendarView extends RelativeLayout implements OnItemClickListener, OnCreateContextMenuListener {
 

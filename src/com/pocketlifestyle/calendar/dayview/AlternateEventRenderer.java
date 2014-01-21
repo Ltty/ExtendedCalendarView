@@ -30,13 +30,13 @@ import android.view.View.MeasureSpec;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.google.code.yadview.DayViewDependencyFactory;
-import com.google.code.yadview.DayViewResources;
-import com.google.code.yadview.Event;
-import com.google.code.yadview.EventLayout;
-import com.google.code.yadview.EventRenderer;
-import com.google.code.yadview.impl.DefaultDayViewResources;
-import com.tyczj.extendedcalendarview.R;
+import com.pocketlifestyle.calendar.R;
+import com.pocketlifestyle.calendar.dayview.base.DayViewDependencyFactory;
+import com.pocketlifestyle.calendar.dayview.base.DayViewResources;
+import com.pocketlifestyle.calendar.dayview.base.Event;
+import com.pocketlifestyle.calendar.dayview.base.EventLayout;
+import com.pocketlifestyle.calendar.dayview.base.EventRenderer;
+import com.pocketlifestyle.calendar.dayview.base.impl.DefaultDayViewResources;
 
 public class AlternateEventRenderer implements EventRenderer {
 
