@@ -26,6 +26,7 @@ public class CalendarView extends Fragment implements OnDayClickListener {
 	public static final int PAGE_RIGHT = 2;
 	private ExtendedCalendarView calendarLayout;
 	private Calendar month;
+	private OnDayClickListener listener;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -36,11 +37,17 @@ public class CalendarView extends Fragment implements OnDayClickListener {
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 		month = (Calendar) getArguments().get("calendar");
 
-		calendarLayout = new ExtendedCalendarView(getActivity());
-		calendarLayout.init(month);
-		calendarLayout.setOnDayClickListener(this);
-		
+		if (calendarLayout == null) {
+			calendarLayout = new ExtendedCalendarView(getActivity());
+			calendarLayout.init(month);
+			calendarLayout.setOnDayClickListener(this);
+		}
+
 		return calendarLayout;
+	}
+
+	public void setOnDayClickListener(OnDayClickListener listener) {
+		this.listener = listener;
 	}
 
 	public final void onNextMonth() {
@@ -69,9 +76,9 @@ public class CalendarView extends Fragment implements OnDayClickListener {
 		f.setArguments(temp);
 		return f;
 	}
-	
+
 	public CharSequence getTitle() {
-		if(calendarLayout == null) {
+		if (calendarLayout == null) {
 			return "";
 		}
 		return calendarLayout.getTitle();
@@ -82,10 +89,16 @@ public class CalendarView extends Fragment implements OnDayClickListener {
 	}
 
 	@Override
-	public void onDayClicked(AdapterView<?> adapter, View view, int position, long id, Day day) {
-		
+	public boolean onDayClicked(AdapterView<?> adapter, View view, int position, long id, Day day) {
 
-		if(calendarLayout.isSelected(position)) {
+		if (listener != null) {
+			if(listener.onDayClicked(adapter, view, position, id, day)) {
+				calendarLayout.select(day);
+				return true;
+			}
+		}
+
+		if (calendarLayout.isSelected(position)) {
 			ContentValues values = new ContentValues();
 			values.put(CalendarProvider.COLOR, EventColor.Orange.ordinal());
 			values.put(CalendarProvider.DESCRIPTION, "Some Description");
@@ -108,9 +121,9 @@ public class CalendarView extends Fragment implements OnDayClickListener {
 			values.put(CalendarProvider.END_DAY, day.getStartDay());
 
 			getActivity().getContentResolver().insert(CalendarProvider.CONTENT_URI, values);
-			
+
 			GregorianCalendar d = new GregorianCalendar(day.getYear(), day.getMonth(), day.getDay());
-			
+
 			Intent i = new Intent();
 			i.putExtra("date", d);
 			i.setClass(getActivity(), DayViewActivity.class);
@@ -119,5 +132,7 @@ public class CalendarView extends Fragment implements OnDayClickListener {
 			calendarLayout.select(position);
 		}
 		
+		return true;
+
 	}
 }

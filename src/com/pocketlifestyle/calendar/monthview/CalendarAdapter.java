@@ -40,12 +40,22 @@ public class CalendarAdapter extends BaseAdapter {
 
 	@Override
 	public int getCount() {
-		return days.length;
+		return 42;
 	}
 
 	@Override
 	public Object getItem(int position) {
 		return dayList.get(position);
+	}
+	
+	public int getPosition(Day d) {
+		for(int i =0; i < dayList.size(); i++) {
+			if(dayList.get(i).getDay() == d.getDay()) {
+				return i;
+			}
+		}
+		
+		return -1;
 	}
 
 	@Override
@@ -102,7 +112,7 @@ public class CalendarAdapter extends BaseAdapter {
 
 		Day day = dayList.get(position);
 
-		if (day.getNumOfEvenets() > 0) {
+		if (day.getNumOfEvenets() > 0 || day.enabled) {
 			Set<Integer> colors = day.getColors();
 
 			iv.setVisibility(View.INVISIBLE);
@@ -142,9 +152,15 @@ public class CalendarAdapter extends BaseAdapter {
 			red.setVisibility(View.INVISIBLE);
 		}
 
-		if (day.getDay() == 0) {
-			rl.setVisibility(View.GONE);
+		if (!day.enabled) {
+			// rl.setVisibility(View.GONE);
+			rl.setEnabled(false);
+			rl.setClickable(false);
+			dayTV.setText(String.valueOf(day.getDay()));
+			dayTV.setTextColor(context.getResources().getColor(R.color.gray_light3));
+			dayTV.setTypeface(null, Typeface.NORMAL);
 		} else {
+
 			dayTV.setVisibility(View.VISIBLE);
 			dayTV.setText(String.valueOf(day.getDay()));
 			dayTV.setTypeface(null, Typeface.BOLD);
@@ -186,15 +202,23 @@ public class CalendarAdapter extends BaseAdapter {
 
 		// populate empty days before first real day
 		if (firstDay > 1) {
+			Calendar cTemp = (Calendar) cal.clone();
+			onPreviousMonth(cTemp);
+
+			int prevDays = cTemp.getActualMaximum(Calendar.DAY_OF_MONTH) - (firstDay - FIRST_DAY_OF_WEEK) + 2;
 			for (j = 0; j < firstDay - FIRST_DAY_OF_WEEK; j++) {
 				days[j] = "";
-				Day d = new Day(context, 0, 0, 0);
+
+				Day d = new Day(context, prevDays, cTemp.get(Calendar.YEAR), cTemp.get(Calendar.MONTH));
+				d.setPrev(true);
 				dayList.add(d);
+				prevDays++;
+
 			}
 		} else {
 			for (j = 0; j < FIRST_DAY_OF_WEEK * 6; j++) {
 				days[j] = "";
-				Day d = new Day(context, 0, 0, 0);
+				Day d = new Day(context, 33, year, month);
 				dayList.add(d);
 			}
 			j = FIRST_DAY_OF_WEEK * 6 + 1; // sunday => 1, monday => 7
@@ -209,7 +233,7 @@ public class CalendarAdapter extends BaseAdapter {
 
 		for (int i = j - 1; i < days.length; i++) {
 			Day d = new Day(context, dayNumber, year, month);
-
+			d.enabled = true;
 			Calendar cTemp = Calendar.getInstance();
 			cTemp.set(year, month, dayNumber);
 			int startDay = Time.getJulianDay(cTemp.getTimeInMillis(),
@@ -222,9 +246,25 @@ public class CalendarAdapter extends BaseAdapter {
 			dayNumber++;
 			dayList.add(d);
 		}
+		
+		Calendar cTemp = (Calendar) cal.clone();
+		onNextMonth(cTemp);
+		int nextDays = 1;
+		for (int i = dayList.size() - 1; i < 42; i++) {
+			Day d = new Day(context, nextDays, cTemp.get(Calendar.YEAR), cTemp.get(Calendar.MONTH));
+			d.setNext(true);
+			dayList.add(d);
+			nextDays++;
+
+		}
 	}
 
 	private int position;
+	
+	public void select(Day day) {
+		int pos = getPosition(day);
+		select(pos);
+	}
 
 	public void select(int pos) {
 		position = pos;
@@ -246,6 +286,24 @@ public class CalendarAdapter extends BaseAdapter {
 
 	public boolean isSelected(int position) {
 		return this.position == position;
+	}
+
+	public final void onNextMonth(Calendar cal) {
+		if (cal.get(Calendar.MONTH) == Calendar.DECEMBER) {
+			cal.set((cal.get(Calendar.YEAR) + 1), Calendar.JANUARY, 1);
+		} else {
+			cal.set(Calendar.MONTH, cal.get(Calendar.MONTH) + 1);
+		}
+		
+	}
+
+	public final void onPreviousMonth(Calendar cal) {
+		if (cal.get(Calendar.MONTH) == Calendar.JANUARY) {
+			cal.set((cal.get(Calendar.YEAR) - 1), Calendar.DECEMBER, 1);
+		} else {
+			cal.set(Calendar.MONTH, cal.get(Calendar.MONTH) - 1);
+		}
+		
 	}
 
 }

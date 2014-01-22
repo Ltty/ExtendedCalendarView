@@ -14,7 +14,9 @@ import android.text.format.Time;
 import android.widget.BaseAdapter;
 
 public class Day{
-	
+	boolean isPrev;
+	boolean isNext;
+	boolean enabled;
 	int startDay;
 	int monthEndDay;
 	int day;
@@ -141,6 +143,30 @@ public class Day{
 			adapter.notifyDataSetChanged();
 		}
 		
+	}
+
+	public boolean isPrev() {
+		return isPrev;
+	}
+
+	public void setPrev(boolean isPrev) {
+		this.isPrev = isPrev;
+	}
+
+	public boolean isNext() {
+		return isNext;
+	}
+
+	public void setNext(boolean isNext) {
+		this.isNext = isNext;
+	}
+
+	public boolean isEnabled() {
+		return enabled;
+	}
+
+	public void setEnabled(boolean enabled) {
+		this.enabled = enabled;
 	}
 	
 

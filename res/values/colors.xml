@@ -52,5 +52,16 @@
 
     <!-- Text color of a clicked event in the day/week view -->
     <color name="day_event_clicked_background_color">#8033B5E5</color>
+    
+    <!-- specific colors -->
+   
+    <color name="gray_transparent">#7f000000</color>
+    <color name="gray_dark">#ff333333</color>
+    <color name="gray_lightdark">#ff777777</color>
+    <color name="gray_main">#ffcdced0</color>
+    <color name="gray_light2">#ffaaaaaa</color>
+    <color name="gray_light3">#ffebebeb</color>
+    <color name="gray_light">#ffeeeeee</color>
+
 
 </resources>

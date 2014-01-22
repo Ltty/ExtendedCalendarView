@@ -41,7 +41,7 @@ public class ExtendedCalendarView extends RelativeLayout implements OnItemClickL
 	private SimpleDateFormat format;
 
 	public interface OnDayClickListener {
-		public void onDayClicked(AdapterView<?> adapter, View view, int position, long id, Day day);
+		public boolean onDayClicked(AdapterView<?> adapter, View view, int position, long id, Day day);
 	}
 
 	public interface OnDayContextMenuListener {
@@ -180,6 +180,10 @@ public class ExtendedCalendarView extends RelativeLayout implements OnItemClickL
 	public void select(int position) {
 		mAdapter.select(position);
 		
+	}
+	
+	public void select(Day day) {
+		mAdapter.select(day);
 	}
 
 	@SuppressLint("NewApi")
